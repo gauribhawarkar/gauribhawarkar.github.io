@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gauri Bhawarkar — Data Governance & Product Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #fff9f4;
+      --clay: #c4714a;
+      --clay-light: #e8a882;
+      --clay-dark: #9e5436;
+      --charcoal: #2c2825;
+      --warm-gray: #6b6460;
+      --soft-gray: #e8e2db;
+      --accent-green: #4a7c6f;
+      --accent-green-light: #d4e8e3;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--soft-gray);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--clay); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--warm-gray);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--clay); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 3rem 4rem;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-shape {
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 55%;
+      height: 120%;
+      background: linear-gradient(135deg, #f0e8df 0%, #e8d5c4 60%, #dfc5ad 100%);
+      border-radius: 40% 0 0 50%;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--accent-green-light);
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--clay);
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: var(--warm-gray);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--clay);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--clay-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--charcoal);
+      padding: 0.85rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      border: 1.5px solid var(--soft-gray);
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--clay);
+      color: var(--clay);
+      transform: translateY(-2px);
+    }
+
+    /* Hero photo */
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .photo-frame {
+      width: 340px;
+      height: 420px;
+      border-radius: 55% 45% 50% 50% / 55% 50% 50% 45%;
+      background: linear-gradient(145deg, #e8d5c4, #c4a08a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(196, 113, 74, 0.2);
+    }
+
+    .photo-placeholder {
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .photo-placeholder svg {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .photo-placeholder p {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      background: white;
+      border-radius: 1rem;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      white-space: nowrap;
+    }
+
+    .photo-badge strong {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      color: var(--clay);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--clay);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--warm-white);
+      max-width: 100%;
+      padding: 6rem 3rem;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--soft-gray);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(196, 113, 74, 0.1);
+    }
+
+    .stat-number {
+      font-family: 'Fraunces', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--clay);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+      line-height: 1.4;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--warm-gray);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+    }
+
+    .about-text p strong {
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { padding-top: 6rem; }
+
+    .exp-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .exp-card {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 2rem 2.5rem;
+      border: 1px solid var(--soft-gray);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem 2rem;
+      align-items: start;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--clay-light), var(--clay));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+    }
+
+    .exp-card:hover::before { opacity: 1; }
+
+    .exp-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--soft-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--clay);
+      flex-shrink: 0;
+    }
+
+    .exp-content {}
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-role {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .exp-duration {
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      background: var(--soft-gray);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      white-space: nowrap;
+    }
+
+    .exp-company {
+      font-size: 0.88rem;
+      color: var(--clay);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--warm-gray);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--clay-light);
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      background: var(--warm-white);
+      max-width: 100%;
+      padding: 6rem 3rem;
+    }
+
+    .skills-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.8rem;
+      border: 1px solid var(--soft-gray);
+    }
+
+    .skill-category-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--soft-gray);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-size: 0.8rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 2rem;
+      border: 1px solid var(--soft-gray);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: var(--clay);
+      color: white;
+      border-color: var(--clay);
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { padding-top: 6rem; }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cert-card {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 2rem;
+      border: 1px solid var(--soft-gray);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--clay-light), var(--clay));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(196, 113, 74, 0.12);
+    }
+
+    .cert-card:hover::after { opacity: 1; }
+
+    .cert-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--clay-light), var(--clay));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .cert-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.3;
+    }
+
+    .cert-issuer {
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+    }
+
+    .cert-year {
+      display: inline-block;
+      background: var(--accent-green-light);
+      color: var(--accent-green);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 2rem;
+      margin-top: auto;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--charcoal);
+      max-width: 100%;
+      padding: 6rem 3rem;
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    #contact .section-label { color: var(--clay-light); }
+
+    #contact .section-title {
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    #contact .section-title em { color: var(--clay-light); }
+
+    .contact-desc {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-email-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--clay-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-email-link:hover { color: white; }
+
+    .contact-email-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0.75rem;
+      padding: 0.9rem 1.1rem;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--clay-light);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .form-group select option {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .btn-submit {
+      background: var(--clay);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 3rem;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      align-self: flex-start;
+    }
+
+    .btn-submit:hover {
+      background: var(--clay-dark);
+      transform: translateY(-2px);
+    }
+
+    .form-success {
+      display: none;
+      background: var(--accent-green-light);
+      color: var(--accent-green);
+      border-radius: 0.75rem;
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1e1c1a;
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .footer-name span { color: var(--clay-light); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--soft-gray);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 9rem;
+      }
+
+      .hero-photo { order: -1; }
+
+      .photo-frame { width: 220px; height: 280px; }
+
+      .hero-desc { margin: 0 auto 2.5rem; }
+
+      .hero-ctas { justify-content: center; }
+
+      .about-inner,
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      nav { padding: 1rem 1.5rem; }
+
+      .nav-links { gap: 1.5rem; }
+
+      section { padding: 4rem 1.5rem; }
+
+      #about, #skills, #contact { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">G<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-shape"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">Open to new opportunities</div>
+      <h1 class="hero-name">Gauri<br><em>Bhawarkar</em></h1>
+      <p class="hero-title">Senior Data Governance Analyst &amp; Product Strategy Professional</p>
+      <p class="hero-desc">
+        Bridging the gap between data integrity and business impact. 6+ years turning complex financial data ecosystems into governed, trusted, decision-ready assets — across Infosys, IBM, and CIBC.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#experience" class="btn-secondary">View My Work</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <p>Photo coming soon</p>
+        </div>
+      </div>
+      <div class="photo-badge">
+        <strong>6+</strong> Years of Experience
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <div id="about" style="background: var(--warm-white);">
+    <div class="about-inner">
+      <div class="reveal">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Data Strategist.<br><em>Product Thinker.</em></h2>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">Years in Data Governance &amp; Analytics</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Major Organizations: Infosys, IBM, CIBC</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Advanced Credentials &amp; Certifications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Passion for Clean, Trusted Data</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <p>
+          I'm a <strong>Senior Data Governance Analyst</strong> with a rare blend of technical depth, business acumen, and product-oriented thinking. My career spans technology consulting at Infosys and IBM to enterprise financial services at CIBC — where I govern mission-critical data across treasury operations, federal compliance, and general ledger systems.
+        </p>
+        <p>
+          What sets me apart is that I don't just govern data — I <strong>drive outcomes</strong>. I coordinate cross-functional workstreams, manage stakeholders, document complex process maps, and translate regulatory requirements into actionable frameworks. In practice, I operate at the intersection of a Senior Analyst and a Program Manager.
+        </p>
+        <p>
+          I hold an <strong>MBA in Marketing</strong>, an <strong>MSBA</strong>, and a <strong>Computer Science degree</strong> — an academic background that lets me speak fluently with both engineers and executives. I'm currently exploring opportunities where data governance expertise meets product strategy and organizational impact.
+        </p>
+        <p>
+          Based in <strong>Michigan</strong>, working remotely. Open to senior and lead roles in financial services, fintech, and data-driven organizations nationwide.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label reveal">Experience</div>
+    <h2 class="section-title reveal">Where I've <em>Made an Impact</em></h2>
+
+    <div class="exp-grid">
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">CI</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div class="exp-role">Senior Data Governance Analyst</div>
+            <div class="exp-duration">Current</div>
+          </div>
+          <div class="exp-company">CIBC — Canadian Imperial Bank of Commerce</div>
+          <ul class="exp-bullets">
+            <li>Govern financial data across US treasury operations including Yankee CD, FHLBC, and Federal Reserve Discount Window processes</li>
+            <li>Produce structured process documentation and operational maps for CIBC US General Ledger CSS workstreams</li>
+            <li>Coordinate cross-functional teams across compliance, operations, and technology using Agile methodologies</li>
+            <li>Work with enterprise systems including FIS, IBS, TRIPS, ACH, Finastra, Alteryx, and Orchestrator</li>
+            <li>Act as de facto program coordinator — managing stakeholder communication, timelines, and deliverables across multiple workstreams simultaneously</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">IBM</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div class="exp-role">Data &amp; Analytics Consultant</div>
+            <div class="exp-duration">Prior Role</div>
+          </div>
+          <div class="exp-company">IBM</div>
+          <ul class="exp-bullets">
+            <li>Delivered data governance and analytics consulting engagements for enterprise clients</li>
+            <li>Developed data quality frameworks and metadata management strategies</li>
+            <li>Collaborated with cross-functional teams to define data governance roles, responsibilities, and standards</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card reveal">
+        <div class="exp-logo">IN</div>
+        <div class="exp-content">
+          <div class="exp-header">
+            <div class="exp-role">Technology Analyst</div>
+            <div class="exp-duration">Prior Role</div>
+          </div>
+          <div class="exp-company">Infosys</div>
+          <ul class="exp-bullets">
+            <li>Built foundational expertise in data systems, process documentation, and technology consulting</li>
+            <li>Supported large-scale enterprise data initiatives across multiple client engagements</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SKILLS -->
+  <div id="skills" style="background: var(--warm-white);">
+    <div class="skills-inner">
+      <div class="section-label reveal">Skills</div>
+      <h2 class="section-title reveal">Tools &amp; <em>Expertise</em></h2>
+
+      <div class="skills-grid">
+        <div class="skill-category reveal">
+          <div class="skill-category-title">Data Governance</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Data Quality Management</span>
+            <span class="skill-tag">Metadata Management</span>
+            <span class="skill-tag">Data Stewardship</span>
+            <span class="skill-tag">Data Lineage</span>
+            <span class="skill-tag">DAMA Framework</span>
+            <span class="skill-tag">DCAM v3</span>
+            <span class="skill-tag">Policy Development</span>
+            <span class="skill-tag">Data Cataloging</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-title">Financial Services Domain</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Treasury Operations</span>
+            <span class="skill-tag">General Ledger</span>
+            <span class="skill-tag">Federal Reserve Processes</span>
+            <span class="skill-tag">Regulatory Compliance</span>
+            <span class="skill-tag">FHLBC</span>
+            <span class="skill-tag">Yankee CD</span>
+            <span class="skill-tag">Risk Management</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-title">Systems &amp; Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag">FIS</span>
+            <span class="skill-tag">IBS</span>
+            <span class="skill-tag">TRIPS</span>
+            <span class="skill-tag">Finastra</span>
+            <span class="skill-tag">Alteryx</span>
+            <span class="skill-tag">Orchestrator</span>
+            <span class="skill-tag">ACH</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-title">Product &amp; Project</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Agile / Scrum</span>
+            <span class="skill-tag">Stakeholder Management</span>
+            <span class="skill-tag">Process Mapping</span>
+            <span class="skill-tag">Workstream Coordination</span>
+            <span class="skill-tag">Product Strategy</span>
+            <span class="skill-tag">CSPO</span>
+            <span class="skill-tag">Cross-functional Leadership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label reveal">Credentials</div>
+    <h2 class="section-title reveal">Certifications &amp; <em>Education</em></h2>
+
+    <div class="cert-grid">
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🏛️</div>
+        <div class="cert-name">DCAM v3 — Data Management Capability Assessment</div>
+        <div class="cert-issuer">EDM Council</div>
+        <div class="cert-year">December 2025</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">⚡</div>
+        <div class="cert-name">CSPO — Certified Scrum Product Owner</div>
+        <div class="cert-issuer">Scrum Alliance</div>
+        <div class="cert-year">2022 / 2023</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">📊</div>
+        <div class="cert-name">Master of Science in Business Analytics (MSBA)</div>
+        <div class="cert-issuer">Graduate Degree</div>
+        <div class="cert-year">Academic</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">🎓</div>
+        <div class="cert-name">MBA — Master of Business Administration (Marketing)</div>
+        <div class="cert-issuer">Graduate Degree</div>
+        <div class="cert-year">Academic</div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">💻</div>
+        <div class="cert-name">Bachelor of Science — Computer Science</div>
+        <div class="cert-issuer">Undergraduate Degree</div>
+        <div class="cert-year">Academic</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div id="contact">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's <em>Connect</em></h2>
+        <p class="contact-desc">
+          I'm open to senior data governance, lead, and product-adjacent roles in financial services and fintech. If you're a recruiter, hiring manager, or collaborator — I'd love to hear from you.
+        </p>
+        <a href="mailto:gauribhawarkar@gmail.com" class="contact-email-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m2 7 10 7 10-7"/>
+          </svg>
+          gauribhawarkar@gmail.com
+        </a>
+      </div>
+
+      <div class="reveal">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select>
+              <option value="">Select a topic...</option>
+              <option>Job Opportunity</option>
+              <option>Consulting Inquiry</option>
+              <option>Networking</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell me about the opportunity or what you'd like to discuss..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send Message →</button>
+          <div class="form-success" id="formSuccess">
+            ✓ Message sent! I'll get back to you within 1–2 business days.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Gauri <span>Bhawarkar</span></div>
+    <div class="footer-copy">© 2026 · Built with intention</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit simulation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').style.display = 'block';
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('formSuccess').style.display = 'none';
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
