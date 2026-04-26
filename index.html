@@ -176,6 +176,25 @@
       transform: translateY(-2px);
     }
 
+    .btn-resume {
+      background: var(--accent-green-light);
+      color: var(--accent-green);
+      padding: 0.85rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1.5px solid transparent;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-resume:hover {
+      background: var(--accent-green);
+      color: white;
+      transform: translateY(-2px);
+    }
+
     .btn-secondary {
       background: transparent;
       color: var(--charcoal);
@@ -846,6 +865,12 @@
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary">Get in Touch</a>
         <a href="#experience" class="btn-secondary">View My Work</a>
+        <a href="Gauri_Bhawarkar_Resume.pdf" download="Gauri_Bhawarkar_Resume.pdf" class="btn-resume">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:6px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Resume
+        </a>
       </div>
     </div>
 
